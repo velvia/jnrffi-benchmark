@@ -11,7 +11,7 @@ trait RustLib {
 
 @State(Scope.Thread)
 class JnrBenchmark {
-  sys.props.put("jnr.ffi.library.path", s"${sys.env("HOME")}/src/rust/rust-filo/target/release")
+  sys.props.put("jnr.ffi.library.path", new java.io.File("target/release").getAbsolutePath())
   val rustLib = LibraryLoader.create(classOf[RustLib]).load("rust_filo")
 
   @Benchmark
